@@ -1,1 +1,1 @@
-$(function(){$.ajax({url:"./api/list",dataType:"json",success:function(o){if(console.log(o),1===o.code){o.data.forEach(function(o){"<p>"+o.tit+"</p>"})}},error:function(o){console.warn(o)}})});
+"use strict";$(function(){$("#ipt").on("input",function(){var t=$(this).val();t?$.ajax({url:"./api/search?key="+t,dataType:"json",success:function(t){if(console.log(t),1===t.code){var n="";t.data.forEach(function(t){n+="<li>"+t.title+"</li>"}),$(".result").html(n)}},error:function(t){console.warn(t)}}):$(".result").html("")})});
