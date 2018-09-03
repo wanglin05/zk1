@@ -16,6 +16,8 @@ var url = require('url');
 
 var fs = require('fs');
 
+var listData = require('./mock/list.json');
+
 // 起服务
 
 function serverFun(serverPath) {
@@ -29,8 +31,12 @@ function serverFun(serverPath) {
                     return false
                 }
 
-                pathname = pathname === '/' ? '/index.html' : pathname;
-                res.end(fs.readFileSync(path.join(__dirname, serverPath, pathname)));
+                if (pathname === '/api/list') {
+                    res.end(JSON.stringify({ code: 1, data: listData }))
+                } else {
+                    pathname = pathname === '/' ? '/index.html' : pathname;
+                    res.end(fs.readFileSync(path.join(__dirname, serverPath, pathname)));
+                }
             }
         }))
 }

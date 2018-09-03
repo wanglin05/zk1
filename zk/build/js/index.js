@@ -1,0 +1,1 @@
+$(function(){$.ajax({url:"./api/list",dataType:"json",success:function(o){if(console.log(o),1===o.code){o.data.forEach(function(o){"<p>"+o.tit+"</p>"})}},error:function(o){console.warn(o)}})});
